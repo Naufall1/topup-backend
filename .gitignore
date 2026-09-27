@@ -1,0 +1,16 @@
+.env
+.mcp.json
+.claude/
+.agents/
+skills-lock.json
+price_list.json
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+*.log
+__pycache__/
+*.pyc
+CLAUDE.md
+AGENTS.md
