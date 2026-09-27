@@ -20,7 +20,7 @@ def _load() -> Config:
     return Config(
         WEBHOOK_SECRET=os.environ["WEBHOOK_SECRET"],
         DATABASE_URL=(
-            f"postgresql://{os.environ['POSTGRES_USERNAME']}:{os.environ['POSTGRES_PASSWORD']}"
+            f"postgresql+psycopg2://{os.environ['POSTGRES_USERNAME']}:{os.environ['POSTGRES_PASSWORD']}"
             f"@{os.environ['POSTGRES_HOST']}:{os.environ['POSTGRES_PORT']}/{os.environ['POSTGRES_DATABASE']}"
         ),
     )

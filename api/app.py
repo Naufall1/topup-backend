@@ -44,6 +44,11 @@ async def digiflazz_response_error_handler(request: Request, exc: DigiflazzRespo
     return JSONResponse(status_code=502, content={"detail": str(exc)})
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 @app.get("/saldo")
 def get_saldo():
     return digiflazz.get_saldo().model_dump()

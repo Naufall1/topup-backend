@@ -33,6 +33,12 @@ class WebhookPayload(BaseModel):
 
 app = FastAPI()
 
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 def handle_update_transaction(payload: dict, db: Session) -> None:
     payload = WebhookPayload(**payload)
 
