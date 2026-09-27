@@ -1,0 +1,24 @@
+services:
+  api:
+    image: ghcr.io/naufall1/topup-backend-api:${VERSION}
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    entrypoint: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+  webhook:
+    image: ghcr.io/naufall1/topup-backend-webhook:${VERSION}
+    build:
+      context: ./webhook
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    depends_on:
+      - api
+    entrypoint: ["uvicorn", "webhook:app", "--host", "0.0.0.0", "--port", "8001"]
